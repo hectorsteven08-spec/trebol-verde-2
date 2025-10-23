@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formatos de Auditoría</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2a4d69;
+  }
+
+  #buscador {
+    display: block;
+    margin: 0 auto 25px auto;
+    width: 80%;
+    max-width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  .categoria {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin: 15px 0;
+    padding: 15px;
+  }
+
+  summary {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #1a73e8;
+  }
+
+  summary:hover {
+    color: #0c47a1;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 10px 0 0 20px;
+    padding: 0;
+  }
+
+  li {
+    margin: 8px 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #0078D7;
+    padding: 6px 10px;
+    background-color: #eef3ff;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  a:hover {
+    background-color: #0078D7;
+    color: #fff;
+  }
+
+  .no-resultados {
+    text-align: center;
+    color: gray;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<h1>📂 Formatos de Auditoría</h1>
+
+<input type="text" id="buscador" placeholder="🔍 Escribe para buscar un formato...">
+
+<div class="categoria">
+  <details open>
+    <summary>✅ Calidad</summary>
+    <ul>
+      <li><a href="formatos/Formato_Inspeccion.pdf" target="_blank">Formato de Inspección</a></li>
+      <li><a href="formatos/Plan_Accion_Correctiva.pdf" target="_blank">Plan de Acción Correctiva</a></li>
+      <li><a href="formatos/Registro_No_Conformidades.pdf" target="_blank">Registro de No Conformidades</a></li>
+    </ul>
+  </details>
+</div>
+
+<div class="categoria">
+  <details>
+    <summary>🦺 Seguridad y Salud</summary>
+    <ul>
+      <li><a href="formatos/Inspeccion_EPP.pdf" target="_blank">Inspección de EPP</a></li>
+      <li><a href="formatos/Reporte_Incidente.pdf" target="_blank">Reporte de Incidente</a></li>
+      <li><a href="formatos/Checklist_Area_Segura.pdf" target="_blank">Checklist Área Segura</a></li>
+    </ul>
+  </details>
+</div>
+
+<div class="categoria">
+  <details>
+    <summary>🍽️ Cocina / Catering</summary>
+    <ul>
+      <li><a href="formatos/Control_Temperatura.pdf" target="_blank">Control de Temperatura</a></li>
+      <li><a href="formatos/Higiene_Manipulador.pdf" target="_blank">Higiene del Manipulador</a></li>
+      <li><a href="formatos/Limpieza_Diaria.pdf" target="_blank">Registro de Limpieza Diaria</a></li>
+    </ul>
+  </details>
+</div>
+
+<p class="no-resultados">No se encontraron formatos con ese nombre.</p>
+
+<script>
+  const buscador = document.getElementById("buscador");
+  const enlaces = document.querySelectorAll("ul li");
+  const sinResultados = document.querySelector(".no-resultados");
+
+  buscador.addEventListener("keyup", () => {
+    const texto = buscador.value.toLowerCase();
+    let encontrados = 0;
+
+    enlaces.forEach(li => {
+      const textoEnlace = li.textContent.toLowerCase();
+      if (textoEnlace.includes(texto)) {
+        li.style.display = "";
+        encontrados++;
+      } else {
+        li.style.display = "none";
+      }
+    });
+
+    sinResultados.style.display = encontrados === 0 && texto.length > 0 ? "block" : "none";
+  });
+</script>
+
+</body>
+</html>
